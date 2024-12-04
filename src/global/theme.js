@@ -10,7 +10,7 @@ theme.PALETTE = {
     secondary:{
 
     },
-    white: "#ffffff",
+    white: "#fff",
     gray:{
 
     },
