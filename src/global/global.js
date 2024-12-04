@@ -1,5 +1,5 @@
 // 글로벌 스타일을 넣기위한 파일(폰트스타일,리셋 등)
-
+import reset from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
