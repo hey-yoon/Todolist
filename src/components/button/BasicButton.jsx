@@ -1,10 +1,10 @@
 import React from 'react';
 
-const BasicButton = () => {
+const BasicButton = ({ref,children,size,shape,variant,color,...rest}) => {
     return (
-        <div>
-            
-        </div>
+        <button ref={ref} children={children} size={size} shape={shape} variant={variant} color={color} {...rest}>
+            {children}
+        </button>
     );
 };
 
