@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BasicButton from '../../components/button/BasicButton';
 
 const Main = () => {
     return (
@@ -9,11 +10,11 @@ const Main = () => {
             </div>
             <div className='buttonWrapper'>
                 <Link to={"/signIn"}>
-                    <button>로그인</button>
+                    <BasicButton size={"full"} shape={"small"} variant={"black"} color={"white"}>로그인</BasicButton>
                 </Link>
 
                 <Link to={"/signUp"}>
-                    <button>회원가입</button>
+                    <BasicButton size={"full"} shape={"small"} variant={"black"} color={"white"}>회원가입</BasicButton>
                 </Link>
             </div>
         </div>
