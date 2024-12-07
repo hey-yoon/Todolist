@@ -1,24 +1,24 @@
-// 테마 스타일을 적용하는 파일
-// 중첩되는 css 스타일 속성
+// 테마 스타일(컬러,폰트사이즈,두께 등등)
 
 const theme = {};
 
 theme.PALETTE = {
     primary: {
-
+        main: "#ffd159",
+        sub: "#fff4d8",
     },
-    secondary:{
-
-    },
+    secondary: "#f1ebf5",
     white: "#fff",
     gray:{
-
+        100: "#F1EBF5",
+        200: "#AEA8B2",
+        300: "#605866",
     },
-    error:{
-
-    },
+    error: "#eb6144",
     background:{
-
+        white: "#fff",
+        gray: "#f1ebf5",
+        black: "#333"
     }
 
 
