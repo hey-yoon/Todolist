@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
+import S from './style';
 
 const Layout = () => {
     return (
-        <div className='background'>
-            <div className='wrapper'>
-                <header>
+        <S.Background>
+            <S.Wrapper>
+                <S.Header>
                     <Link to={"/"}>Hyeyoon Todo</Link>
-                </header>
+                </S.Header>
                 
                 <main>
                     <Outlet />
                 </main>
 
-                <nav>
+                <S.Nav>
                     <NavLink to={"/"}>
                         <p>피드</p>
                     </NavLink>
@@ -26,9 +27,9 @@ const Layout = () => {
                     <NavLink to={"/"}>
                         <p>my</p>
                     </NavLink>
-                </nav>
-            </div>
-        </div>
+                </S.Nav>
+            </S.Wrapper>
+        </S.Background>
     );
 };
 
