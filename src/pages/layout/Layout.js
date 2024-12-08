@@ -15,17 +15,17 @@ const Layout = () => {
                 </main>
 
                 <S.Nav>
-                    <NavLink to={"/"}>
+                    <NavLink to={"/todo"}>
                         <p>피드</p>
                     </NavLink>
-                    <NavLink to={"/"}>
+                    <NavLink to={"/search"}>
                         <p>검색</p>
                     </NavLink>
-                    <NavLink to={"/"}>
+                    <NavLink to={"/notice"}>
                         <p>알림</p>
                     </NavLink>
-                    <NavLink to={"/"}>
-                        <p>my</p>
+                    <NavLink to={"/my"}>
+                        <p>My</p>
                     </NavLink>
                 </S.Nav>
             </S.Wrapper>
