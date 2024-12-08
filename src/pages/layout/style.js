@@ -30,6 +30,7 @@ S.Header = styled.header`
             font-size: 24px;
             font-weight: 600;
             display: block;
+            color: #0378A6;
         }
 `
 
@@ -43,12 +44,23 @@ S.Nav = styled.nav`
     & a {
         font-size: 16px;
         text-align: center;
-    }
-    & p {
+
+        & p {
           color: #bec4c9;
       }
+    }
 
+    & .active{
+        & p {
+          color: #0378A6 !important;
+          font-weight: 700;
+      }
+    }
+    
+`
 
+S.main = styled.main`
+    flex:1;
 `
 
 

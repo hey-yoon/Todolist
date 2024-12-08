@@ -7,12 +7,12 @@ const Layout = () => {
         <S.Background>
             <S.Wrapper>
                 <S.Header>
-                    <Link to={"/"}>Hyeyoon Todo</Link>
+                    <Link to={"/"}>Heayoon Todo</Link>
                 </S.Header>
                 
-                <main>
+                <S.main>
                     <Outlet />
-                </main>
+                </S.main>
 
                 <S.Nav>
                     <NavLink to={"/todo"}>
