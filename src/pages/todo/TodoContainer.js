@@ -11,8 +11,17 @@ const TodoContainer = () => {
 
     // 데이터를 가져옴
     const getTodos = async() => {
-        
-        
+        try{
+            const response = await fetch("http://localhost:8000/todo");
+            if (!response.ok) {
+                throw new Error("네트워크 응답이 실패했습니다.");
+            }
+            const datas = await response.json();
+            setTodos(datas);
+        }
+        catch(error){
+            console.error("API 호출 오류:", error);
+        }
     }
 
     // 사이드 이펙트
