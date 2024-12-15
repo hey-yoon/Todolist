@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TodoInsert from './TodoInsert';
 import Todo from './Todo';
+import S from './style';
 
 const TodoContainer = () => {
     
@@ -33,7 +34,7 @@ const TodoContainer = () => {
     return (
         <div>
             <TodoInsert isTodoUpdate={isTodoUpdate} setIsTodoUpdate={setIsTodoUpdate} todos={todos} />
-            <p className='SubTitle'>남은 할일:<span>{todos && todos.length}</span></p>
+            <S.SubTitle>남은 할일:<span>{todos && todos.length}</span></S.SubTitle>
             <ul>
                 {todos && todos.map((todo,i)=>(
                     <Todo key={i} todo={todo} isTodoUpdate={isTodoUpdate} setIsTodoUpdate={setIsTodoUpdate} />

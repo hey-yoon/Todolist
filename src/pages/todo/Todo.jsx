@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useInput from '../../hooks/useInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faTrash, faCheck, faX } from '@fortawesome/free-solid-svg-icons' ;
+import S from './style';
 
 const Todo = ({isTodoUpdate,setIsTodoUpdate,todo}) => {
     const {id,title} = todo;
@@ -103,39 +104,39 @@ const Todo = ({isTodoUpdate,setIsTodoUpdate,todo}) => {
         })
     }
 
-    
+
     return (
-        <li>
-            <div className='wrapper'>
+        <S.Li>
+            <S.Wrapper>
                 <input type="checkbox" checked={isChecked} onChange={handleIsChecked} />
                 {isEdit ? (
                     <input className='update-input' type='text' value={value} onChange={onChangeValue}/>
                 ) : (
-                    <p className={isChecked? "complete" : ""}>{title}</p>
+                    <S.Title className={isChecked? "complete" : ""}>{title}</S.Title>
                 )}
 
-            </div>
-            <div className='wrapper'>
+            </S.Wrapper>
+            <S.Wrapper>
                 {isEdit ? (
                     <>
-                        <button onClick={handleIsUpdate}>
+                        <S.Button onClick={handleIsUpdate}>
                             <FontAwesomeIcon className='check' icon={faCheck}></FontAwesomeIcon>
-                        </button>
-                        <button onClick={handleIsEdit}>
+                        </S.Button>
+                        <S.Button onClick={handleIsEdit}>
                             <FontAwesomeIcon className='exit' icon={faX} ></FontAwesomeIcon>
-                        </button>
+                        </S.Button>
                     </>
                 ) : (
-                    <button onClick={handleIsEdit}>
+                    <S.Button onClick={handleIsEdit}>
                         <FontAwesomeIcon className='pen' icon={faPen}></FontAwesomeIcon>
-                    </button>
+                    </S.Button>
                 )}
-                <button onClick={handleIsRemove}>
+                <S.Button onClick={handleIsRemove}>
                     <FontAwesomeIcon className='trash' icon={faTrash}></FontAwesomeIcon>
-                </button>
+                </S.Button>
                 
-            </div>
-        </li>
+            </S.Wrapper>
+        </S.Li>
     );
 };
 
