@@ -94,14 +94,17 @@ const Todo = ({isTodoUpdate,setIsTodoUpdate,todo}) => {
 
     // 타이틀 수정
     const handleIsUpdate = async() => {
-        await fetch(`http://localhost:8000/todo/modify`,{
+        try{
+            await fetch(`http://localhost:8000/todo/modify`,{
             method: 'PUT',
             headers: {
                 'Content-Type' : 'application/json'
             },
             body: JSON.stringify({
                 ...todo,
-                title: value
+                id: todo.id,
+                title: value,
+                isChecked: todo.isChecked
             })
         }).then((res)=> {
             console.log("리스폰스",res)
@@ -109,6 +112,12 @@ const Todo = ({isTodoUpdate,setIsTodoUpdate,todo}) => {
             setIsTodoUpdate(!isTodoUpdate)
             setIsEdit(!isEdit)
         })
+
+        }
+        catch(error){
+            console.error("수정요청 오류:",error)
+        }
+        
     }
 
 
