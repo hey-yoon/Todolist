@@ -74,20 +74,27 @@ const Todo = ({isTodoUpdate,setIsTodoUpdate,todo}) => {
     // 삭제
     const handleIsRemove = async () => {
         if(window.confirm("정말 삭제하시겠습니까?")){
-            await fetch(`http://localhost:4000/todo/delete`,{
-                method: 'DELETE'
+            await fetch(`http://localhost:8000/todo/delete`,{
+                method: 'DELETE',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({
+                    id: todo.id
+                })
             }).then((res)=>{
                 console.log("리스폰스 받기",res)
                 if(res.ok){
                     setIsTodoUpdate(!isTodoUpdate)
                 }
             })
+            .catch((error)=>console.error("삭제요청 오류:", error));
         }
     }
 
     // 타이틀 수정
     const handleIsUpdate = async() => {
-        await fetch(`http://localhost:4000/todo/modify`,{
+        await fetch(`http://localhost:8000/todo/modify`,{
             method: 'PUT',
             headers: {
                 'Content-Type' : 'application/json'
