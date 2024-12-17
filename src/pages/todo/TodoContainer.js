@@ -34,8 +34,8 @@ const TodoContainer = () => {
     return (
         <div>
             <TodoInsert isTodoUpdate={isTodoUpdate} setIsTodoUpdate={setIsTodoUpdate} todos={todos} />
-            <S.SubTitle>남은 할일:<span>{todos && todos.length}</span></S.SubTitle>
-            <ul>
+            <S.SubTitle>남은 할일:<span>👍{todos && todos.length}</span></S.SubTitle>
+            <ul style={{paddingLeft:"0px"}}>
                 {todos && todos.map((todo,i)=>(
                     <Todo key={i} todo={todo} isTodoUpdate={isTodoUpdate} setIsTodoUpdate={setIsTodoUpdate} />
                 ))}

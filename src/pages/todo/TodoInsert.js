@@ -22,7 +22,6 @@ const TodoInsert = ({isTodoUpdate, setIsTodoUpdate, todos}) => {
                 })
 
             })
-            // back단에서 받음
             .then((res)=>{
                 console.log("리스폰스", res)
                 if(!res.ok) return console.log(`Error ${res}`)
