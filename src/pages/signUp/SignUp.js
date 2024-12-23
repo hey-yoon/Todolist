@@ -1,7 +1,9 @@
 import React from 'react';
-import { Form } from 'react-router-dom';
+import { Form, useFormAction } from 'react-router-dom';
 import BasicInput from '../../components/input/BasicInput';
 import BasicButton from '../../components/button/BasicButton';
+
+useFormAction();
 
 const SignUp = () => {
     return (
