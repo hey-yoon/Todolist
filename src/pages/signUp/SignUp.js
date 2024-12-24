@@ -1,9 +1,10 @@
 import React from 'react';
-import { Form, useFormAction } from 'react-router-dom';
+import { useForm} from 'react-router-dom';
 import BasicInput from '../../components/input/BasicInput';
 import BasicButton from '../../components/button/BasicButton';
 
-useFormAction();
+const { register, handleSubmit, getValues, formState: { isSubmitted, isSubmitting, errors}} = useForm({mode : "onchange"});
+
 
 const SignUp = () => {
     return (
