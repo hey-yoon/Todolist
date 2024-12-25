@@ -1,18 +1,54 @@
 import React from 'react';
-import { useForm} from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import BasicInput from '../../components/input/BasicInput';
 import BasicButton from '../../components/button/BasicButton';
-
-const { register, handleSubmit, getValues, formState: { isSubmitted, isSubmitting, errors}} = useForm({mode : "onchange"});
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
+    const { register, handleSubmit, getValues, formState: { isSubmitted, isSubmitting, errors}} = useForm({mode : "onchange"});
+    
+    // 정규식(아이디,패스워드)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
+
+    // 페이지를 넘겨줄 수 있는 훅폼
+    const navigate = useNavigate();
+
+
+
     return (
-        <form action="">
+        <form onSubmit={handleSubmit(async(data)=>{
+            await fetch("http://localhost:8000/user/register",{
+                method: "POST",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({
+                    email: data.email,
+                    password: data.password
+                })
+            })
+
+        })}>
             {/* 이메일 */}
             <label>
                 <p>이메일</p>
-                <BasicInput size={"full"} shape={"small"} variant={"blue"} color={"black"} type="text" id="email" name="email" placeholder="아이디를 입력하세요."/>
+                <BasicInput size={"full"} shape={"small"} variant={"blue"} color={"black"} type="text" id="email" name="email" placeholder="아이디를 입력하세요."
+
+                {...register("email",{
+                    required: true,
+                    pattern:{
+                        value: emailRegex,
+                    }
+                })}
+                />
+                {errors?.email?.type === "required" && (
+                    <p>이메일을 입력해주세요.</p>
+                )}
+                {errors?.email?.type === "pattern" && (
+                    <p>이메일 양식에 맞게 입력해주세요.</p>
+                )}
             </label>
             {/* 비밀번호 */}
             <label>
