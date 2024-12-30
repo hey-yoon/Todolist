@@ -25,12 +25,23 @@ const SignUp = () => {
                 headers: {
                     "Content-Type":"application/json"
                 },
+                // body에 넣어서 json형태로 바꿔서 서버로 전달
                 body: JSON.stringify({
                     email: data.email,
                     password: data.password
                 })
             })
-
+            // 다시 message를 받아옴
+            .then((res)=>res.json())
+            .then((res)=> {
+                if(!res.registerSuccess){
+                    alert(res.message);
+                } else{
+                    // 만약 회원가입 성공이라면 로그인으로 보내기
+                    alert(res.message);
+                    navigate("/signIn")
+                }
+            })
         })}>
             {/* 이메일 */}
             <S.Label>
@@ -74,17 +85,18 @@ const SignUp = () => {
             <S.Label>
                 <S.Title>비밀번호 확인</S.Title>
                 <Input size={"full"} shape={"small"} variant={"blue"} color={"black"} type="password" placeholder="비밀번호를 확인해주세요."
-                {...register("passwordConfirm", {
-                    required : true,
-                    validate : {
-                      matchPassword : (value) => {
-                        const { password } = getValues();
-                        let isMatch = password == value;
-                        console.log(value, password, isMatch);
-                        return isMatch;
-                      }
+
+                {...register("passwordConfirm",{
+                    required: true,
+                    validate: {
+                        matchPassword: (value) => {
+                            const{password} = getValues();
+                            let isMatch = password == value;
+                            console.log(value,password,isMatch);
+                            return isMatch;
+                        }
                     }
-                  })}
+                })}
                 />
                 {errors?.passwordConfirm && (
           <S.ConfirmMessage>비밀번호를 확인해 주세요.</S.ConfirmMessage>
