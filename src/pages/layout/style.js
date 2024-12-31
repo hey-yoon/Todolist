@@ -48,12 +48,22 @@ S.Nav = styled.nav`
         & p {
           color: #bec4c9;
       }
+
+      .icon{
+        path{
+            color:#bec4c9;
+        }
+      }
     }
 
     & .active{
         & p {
           color: #0378A6 !important;
           font-weight: 700;
+      }
+
+      & path {
+        color: #0378A6 !important;
       }
     }
     
