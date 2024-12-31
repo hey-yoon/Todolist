@@ -20,7 +20,22 @@ const SignIn = () => {
 
     return (
         <S.Form onSubmit={handleSubmit(async(data)=>{
-            
+            console.log(data)
+            await fetch("http://localhost:8000/user/login",{
+                method: "POST",
+                headers: {
+                    "Content-Type":"Application/json"
+                },
+                body: JSON.stringify({
+                    email: data.email,
+                    password: data.password
+                })
+            })
+            .then((res)=>res.json())
+            .then((res)=>{
+                console.log(res)
+            })
+            .catch(console.error)
         })}>
             {/* 이메일 */}
             <S.Label>
