@@ -18,7 +18,7 @@ const initialValue = {
     
 };
 
-// 리듀서
+// 리듀서 
 const user = handleActions({
     [SET_PREVIOUS_URL] : (state = initialValue, action) => ({...state,previousUrl: action.payload}),
     [SET_USER] : (state = initialValue, action) => ({...state,currentUser: action.payload}),
