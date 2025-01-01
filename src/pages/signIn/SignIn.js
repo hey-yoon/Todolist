@@ -1,9 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import BasicButton from '../../components/button/BasicButton';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import S from './style';
 import Input from '../../components/input/style';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, setUserStatus } from '../../modules/user';
 
 
 const SignIn = () => {
@@ -13,13 +15,24 @@ const SignIn = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
 
-    // 페이지를 넘겨줄 수 있는 훅폼
-    const navigate = useNavigate();
+    // 로그인 이후 로직
+    const dispatch = useDispatch();
+    const isLogin = useSelector((state)=> state.user.isLogin); //현재 로그인 상태
+    const currentUser = useSelector((state=>state.user.currentUser)); //현재 로그인된 id
 
+    // 리다이렉트
+    if(isLogin){
+        return(
+            <>
+                {/* <div>{currentUser.email}님 환영합니다.</div> */}
+                <Navigate to={"/my"} replace={true}/>
+            </>
+        )
+    }
 
 
     return (
-        <S.Form onSubmit={handleSubmit(async(data)=>{
+        <S.Form onSubmit={handleSubmit(async (data)=>{
             console.log(data)
             await fetch("http://localhost:8000/user/login",{
                 method: "POST",
@@ -33,7 +46,15 @@ const SignIn = () => {
             })
             .then((res)=>res.json())
             .then((res)=>{
-                console.log(res)
+                if(!res.loginSuccess){
+                    let {loginSuccess, message} = res;
+                    alert(message);
+                }else{
+                    let {user,loginSuccess, message} = res;
+                    console.log("로그인 성공!😀",user)
+                    dispatch(setUser(user))
+                    dispatch(setUserStatus(true))
+                }
             })
             .catch(console.error)
         })}>
