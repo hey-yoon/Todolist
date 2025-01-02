@@ -52,8 +52,8 @@ const SignIn = () => {
                 }else{
                     let {user,loginSuccess, message} = res;
                     console.log("로그인 성공!😀",user)
-                    dispatch(setUser(user))
-                    dispatch(setUserStatus(true))
+                    dispatch(setUser(user)) //redux에 정보 넣기
+                    dispatch(setUserStatus(true)) //redux에 상태 변경하기
                 }
             })
             .catch(console.error)
