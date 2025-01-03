@@ -8,6 +8,7 @@ import { setPreviousUrl } from '../../modules/user';
 
 
 const Layout = () => {
+    
     // 비로그인 회원이 My페이지 접근을 못하게 한다.
     const location = useLocation();
     const dispatch = useDispatch(); 
