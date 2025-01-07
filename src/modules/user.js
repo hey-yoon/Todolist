@@ -15,7 +15,6 @@ const initialValue = {
     previousUrl: "",
     currentUser : {},
     isLogin: false
-    
 };
 
 // 리듀서 
