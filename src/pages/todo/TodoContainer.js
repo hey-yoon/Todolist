@@ -9,7 +9,6 @@ const TodoContainer = () => {
 
     // 상태관리(CRUD) -> 의존성 배열 추가
     const [isTodoUpdate,setIsTodoUpdate] = useState(false);
-
     // 데이터를 가져옴
     const getTodos = async() => {
         try{
