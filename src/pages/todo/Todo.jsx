@@ -99,7 +99,6 @@ const Todo = ({isTodoUpdate,setIsTodoUpdate,todo}) => {
         }
         catch(error){
             console.error("수정요청 오류:",error)
-            
         }
         
     }
