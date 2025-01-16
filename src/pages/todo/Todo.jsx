@@ -72,7 +72,6 @@ const Todo = ({isTodoUpdate,setIsTodoUpdate,todo}) => {
                 }
             })
             .catch((error)=>console.error("삭제요청 오류:", error));
-            
         }
     }
 
