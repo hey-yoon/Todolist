@@ -6,6 +6,7 @@ const BasicButton = ({ref,children,size,shape,variant,color,...rest}) => {
         <Button ref={ref} children={children} size={size} shape={shape} variant={variant} color={color} {...rest}>
             {children}
         </Button>
+        
     );
 };
 
